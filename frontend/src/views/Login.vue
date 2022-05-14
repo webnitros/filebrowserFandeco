@@ -2,9 +2,8 @@
   <div id="login" :class="{ recaptcha: recaptcha }">
     <form @submit="submit">
       <img :src="logoURL" alt="File Browser" />
-      <h1>{{ name }}</h1>
+      <h1>{{ name }} (555 666))))</h1>
       <div v-if="error !== ''" class="wrong">{{ error }}</div>
-
       <input
         class="input input--block"
         type="text"

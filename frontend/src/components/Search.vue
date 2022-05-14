@@ -47,12 +47,17 @@
             </div>
           </template>
         </template>
-        <ul v-show="results.length > 0">
-          <li v-for="(s, k) in filteredResults" :key="k">
-            <router-link @click.native="close" :to="s.url">
+        <ul id="listing" class="list file-icons"  v-show="results.length > 0">
+          <li class="item" v-for="(s, k) in filteredResults" :key="k">
+            <router-link target="_blank" :to="s.url" style="width: 100%">
+              <div>
               <i v-if="s.dir" class="material-icons">folder</i>
-              <i v-else class="material-icons">insert_drive_file</i>
-              <span>./{{ s.path }}</span>
+                <img v-else :data-src=urlImg(s) :src=urlImg(s) lazy="loaded">
+              </div>
+              <div>
+                <p class="name">{{ s.Name }}</p>
+                <p data-order="88.46 KB" class="size">{{ s.size }}</p>
+              </div>
             </router-link>
           </li>
         </ul>
@@ -151,6 +156,10 @@ export default {
     ...mapMutations(["showHover", "closeHovers", "setReload"]),
     open() {
       this.showHover("search");
+    },
+    urlImg(data) {
+      let path = data.pathSearch + data.path
+      return '/api/preview/thumb/'+path+'?k=1652435016225&amp;inline=true'
     },
     close(event) {
       event.stopPropagation();
