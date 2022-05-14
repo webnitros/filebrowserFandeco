@@ -47,12 +47,18 @@
             </div>
           </template>
         </template>
-        <ul id="listing" class="list file-icons"  v-show="results.length > 0">
+        <ul id="listing" class="list file-icons" v-show="results.length > 0">
           <li class="item" v-for="(s, k) in filteredResults" :key="k">
             <router-link target="_blank" :to="s.url" style="width: 100%">
               <div>
-              <i v-if="s.dir" class="material-icons">folder</i>
-                <img v-else :data-src=urlImg(s) :src=urlImg(s) lazy="loaded">
+                <i v-if="s.dir" class="material-icons">folder</i>
+                <img
+                  v-else
+                  :data-src="urlImg(s)"
+                  :src="urlImg(s)"
+                  lazy="loaded"
+                  alt=""
+                />
               </div>
               <div>
                 <p class="name">{{ s.Name }}</p>
@@ -158,8 +164,8 @@ export default {
       this.showHover("search");
     },
     urlImg(data) {
-      let path = data.pathSearch + data.path
-      return '/api/preview/thumb/'+path+'?k=1652435016225&amp;inline=true'
+      let path = data.pathSearch + data.path;
+      return "/api/preview/thumb/" + path + "?k=1652435016225&amp;inline=true";
     },
     close(event) {
       event.stopPropagation();
