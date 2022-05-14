@@ -9,7 +9,7 @@ filebrowser -r /Users/astep/FilesDEMO -p 8081
 
 filebrowser -r /Users/astep/FilesDEMO -p 8081
 
-# 
+# docker
 docker run \
 -v /Users/astep/FilesDEMO:/srv \
 -v /Users/astep/GolandProjects/filebrowser2/filebrowser.db:/database/filebrowser.db \
